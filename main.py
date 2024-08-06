@@ -107,9 +107,11 @@ def show_birthday(args, book: AddressBook):
 @input_error
 def del_record(args, book: AddressBook):
     name, *_ = args
-    record = book.find_record(name)
-    book.delete_record(name)
-    return f"Record with name {name} is deleted"
+    if book.find_record(name) is None:
+        return f"Record with {name} not found."
+    else:
+        book.delete_record(name)
+        return f"Record with name {name} is deleted"
 
 
 if __name__ == "__main__":

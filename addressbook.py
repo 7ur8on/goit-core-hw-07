@@ -24,8 +24,6 @@ class AddressBook(UserDict):
     def __str__(self):
         table = PrettyTable()
         table.field_names = ["Name", "Phones", "Birthday"]
-        # {"name": {"name": value}, "phones": [value, value, ...], "birthday": value}
-        # print(self.__dict__)
         for obj in self.data.values():
             phone = '; '.join(p.value for p in obj.phones)
             table.add_row([obj.name.value, phone, obj.birthday.value if obj.birthday else 'N/A'])
@@ -64,9 +62,4 @@ class AddressBook(UserDict):
                 congratulation_date = self.adjust_for_weekend(birthday_this_year)
                 congratulation_date_str = self.date_to_string(congratulation_date)
                 table.add_row([record.name.value, congratulation_date_str])
-                # upcoming_birthdays.append({
-                #     "name": record.name.value,
-                #     "congratulation_date": congratulation_date_str
-                # })
         return table.get_string()
-        # return upcoming_birthdays if upcoming_birthdays else "List is empty"

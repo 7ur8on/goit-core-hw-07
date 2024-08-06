@@ -25,10 +25,6 @@ class Record:
         if self.find_phone(old_number):
             self.delete_phone(old_number)
             self.add_phone(new_number)
-        # for num in self.phones:
-        #     if num.value == old_number:
-        #         num.value = new_number
-        #         break
 
     def find_phone(self, number):
         for num in self.phones:
